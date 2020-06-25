@@ -2,12 +2,14 @@ package com.aprendendotddspring.aprendendo.model.repository;
 
 import com.aprendendotddspring.aprendendo.entity.Book;
 import com.aprendendotddspring.aprendendo.entity.Loan;
+import com.aprendendotddspring.aprendendo.service.EmailService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ActiveProfiles;
@@ -28,6 +30,9 @@ public class LoanRepositoryTest {
 
     @Autowired
     TestEntityManager entityManager;
+
+    @MockBean
+    EmailService emailService;
 
     @Test
     @DisplayName("deve verificar se existe emprestimo não devolvido para o livro")

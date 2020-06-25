@@ -15,11 +15,9 @@ public class ApiErrors {
     public ApiErrors(BindingResult bindingResult) {
         this.errors = new ArrayList<>();
 
-        bindingResult.getAllErrors().stream().forEach(
-                error -> this.errors.add(
-                        error.getDefaultMessage()
-                )
-        );
+        bindingResult.getAllErrors().stream()
+                .forEach(error -> this.errors.add(
+                        error.getDefaultMessage()));
     }
 
     public ApiErrors(BusinessException ex) {

@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -65,6 +66,9 @@ public class BookControllerTest {
     //criar instancias mockadas para ser usadas em nosso contexto
     @MockBean
     private BookService service;
+
+    @MockBean
+    LoanService loanService;
 
     @Test
     @DisplayName("Deve criar um livro com sucesso")
@@ -130,7 +134,7 @@ public class BookControllerTest {
         mvc
                 .perform(request)
                 .andExpect( status().isBadRequest() )
-                .andExpect( jsonPath("errors", hasSize(3)) );
+                .andExpect( jsonPath("errors", hasSize(1)) );
 
     }
 

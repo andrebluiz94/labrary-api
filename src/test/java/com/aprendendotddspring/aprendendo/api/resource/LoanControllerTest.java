@@ -10,6 +10,7 @@ import com.aprendendotddspring.aprendendo.config.Beans;
 import com.aprendendotddspring.aprendendo.entity.Book;
 import com.aprendendotddspring.aprendendo.entity.Loan;
 import com.aprendendotddspring.aprendendo.service.BookService;
+import com.aprendendotddspring.aprendendo.service.EmailService;
 import com.aprendendotddspring.aprendendo.service.LoanService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.Matchers;
@@ -47,12 +48,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("Test")
 @WebMvcTest
 @AutoConfigureMockMvc
-@ContextConfiguration(classes = {
-        Beans.class,
-        BookController.class,
-        ApplicationControllerAdvice.class
-
-})
 public class LoanControllerTest {
 
     static final String LOAN_API = "/api/loans";
@@ -65,6 +60,9 @@ public class LoanControllerTest {
 
     @MockBean
     private LoanService loanService;
+
+    @MockBean
+    private EmailService emailService;
 
 
     @Test
